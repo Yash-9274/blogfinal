@@ -53,10 +53,10 @@ const Profile = () => {
                         <div className="profile-top-wrap">
 
                             <span>
-                                Membership Information
+                                Account Details
                             </span>
 
-                            <a href="#!">Close  Account</a>
+                            <a href="#!">Delete Account</a>
                         </div>
                         <ul>
 
@@ -77,7 +77,7 @@ const Profile = () => {
                             </li>
                             <li>
 
-                                <span> Account Created Date </span>
+                                <span> Account Created On </span>
                                 <div>
                                     {editDate(user.createdAt)}
                                 </div>

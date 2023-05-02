@@ -52,10 +52,7 @@ const LoginScreen = () => {
           <div className="top-login-explain">
             <h2>Login to Your Account </h2>
 
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero unde sed doloremque!
-            </p>
-
+            
 
           </div>
 

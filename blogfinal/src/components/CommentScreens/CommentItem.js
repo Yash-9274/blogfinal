@@ -73,7 +73,7 @@ const CommentItem = ({ comment, activeUser }) => {
             <div className="comment-top-block">
 
                 <section>
-                    <img src={`/userPhotos/${comment.author.photo}`} alt={comment.author.username} width="35" />
+                    <img src={`http://localhost:2000/userPhotos/${comment.author.photo}`} alt={comment.author.username} width="35" />
 
                     <div>
                         <span className='comment-author-username' >{comment.author.username}</span>

@@ -26,7 +26,7 @@ const Story = ({ story }) => {
         <div className="story-card">
             <Link to={`/story/${story.slug}`} className="story-link">
 
-                <img className=" story-image" src={`/storyImages/${story.image}`} alt={story.title} />
+                <img className="story-image" src={`http://localhost:2000/storyImages/${story.image}`} alt={story.title} />
                 <div className="story-content-wrapper">
 
                     <h5 className="story-title">

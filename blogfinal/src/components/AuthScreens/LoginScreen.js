@@ -2,24 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 import "../../Css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "react-google-login";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const handleLoginSuccess = (response) => {
-    navigate("/");
-    console.log(response);
-    const { accessToken } = response.tokenObj;
-    sessionStorage.setItem("accessToken", accessToken); // TODO: Implement success handling logic
-  };
-
-  const handleLoginFailure = (error) => {
-    console.error(error); // TODO: Implement failure handling logic
-  };
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -89,37 +80,24 @@ const LoginScreen = () => {
             >
               Login
             </button>
-            <GoogleLogin
-              clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com"
-              onSuccess={handleLoginSuccess}
-              onFailure={handleLoginFailure}
-              cookiePolicy={"single_host_origin"}
-              className="google-auth-button"
-              render={(renderProps) => (
-                <button
-                  type="button"
-                  class="class=text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center justify-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
-                  onClick={renderProps.onClick}
-                >
-                  <svg
-                    class="w-4 h-4 mr-2 -ml-1"
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fab"
-                    data-icon="google"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 488 512"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-                    ></path>
-                  </svg>
-                  Sign in with Google
-                </button>
-              )}
-            />
+            <GoogleOAuthProvider clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com">
+              <div className="mt-6 flex justify-center w-full">
+                <GoogleLogin
+                  onSuccess={(credentialResponse) => {
+                    const user = jwt_decode(credentialResponse.credential);
+                    let json = JSON.parse(
+                      `{"email": "${user["email"]}", "name": "${user["name"]}", "clientId": "${credentialResponse.clientId}"}`
+                    );
+                    console.log(json);
+                    // uploadUserData(json);
+                    navigate("/");
+                  }}
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                />
+              </div>
+            </GoogleOAuthProvider>
           </form>
         </div>
 

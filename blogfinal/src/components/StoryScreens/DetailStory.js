@@ -232,7 +232,7 @@ const DetailStory = () => {
               <div className='story-content' >
 
                 <div className="story-banner-img">
-                  <img src={`/storyImages/${story.image}`} alt={story.title} />
+                  <img src={`http://localhost:2000/storyImages/${story.image}`} alt={story.title} />
 
                 </div>
 
@@ -297,7 +297,7 @@ const DetailStory = () => {
                             <p>Edit Blog</p>
                           </Link>
                           <div className='deleteStoryLink' onClick={handleDelete}>
-                            <p>Delete Blog</p>
+                            <p>Delete </p>
                           </div>
                         </div> : null
                       }

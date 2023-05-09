@@ -51,7 +51,7 @@ const AddStory = () => {
             type: "formData",
         },
       });
-      setSuccess("Add story successfully ");
+      setSuccess("Add Blog successfully ");
 
       clearInputs();
       setTimeout(() => {
@@ -102,7 +102,7 @@ const AddStory = () => {
           <div class="txt">
             {image
               ? image.name
-              : " Include a high-quality image in your story to make it more inviting to readers."}
+              : " Include a high-quality image in your blog to make it more inviting to readers."}
           </div>
           <input
             name="image"

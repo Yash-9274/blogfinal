@@ -294,10 +294,10 @@ const DetailStory = () => {
                         story.author._id === activeUser._id ?
                         <div className="delete_or_edit_story  ">
                           <Link className='editStoryLink' to={`/story/${story.slug}/edit`}>
-                            <p>Edit Story</p>
+                            <p>Edit Blog</p>
                           </Link>
                           <div className='deleteStoryLink' onClick={handleDelete}>
-                            <p>Delete Story</p>
+                            <p>Delete Blog</p>
                           </div>
                         </div> : null
                       }

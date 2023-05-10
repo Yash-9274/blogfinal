@@ -72,7 +72,7 @@ const ReadListStoryItem = ({story,editDate}) => {
 
             <section>
                 <div className="story-Image-Wrap">
-                    <img src={`/storyImages/${story.image}`} alt={story.title} width="180px" />
+                    <img src={`http://localhost:2000/storyImages/${story.image}`} alt={story.title} width="180px" />
                 </div>
 
             </section>

@@ -41,7 +41,10 @@ const App = () => {
             <Route exact path="/profile" element={<PrivateRoute />}>
               <Route exact path="/profile" element={<Profile />} />
             </Route>
-            
+            <Route exact path="/profile1" element={<PrivateRoute />}>
+              <Route exact path="/profile1" element={<Profile1 />} />
+            </Route>
+
       
             <Route exact path="/edit_profile" element={<PrivateRoute />}>
               <Route exact path="/edit_profile" element={<EditProfile />} />
@@ -113,7 +116,7 @@ const LayoutsWithHeader = () => {
     <>
       <Header />
       <Outlet />
-      
+      <Link to="/Profile1"></Link> 
     </>
   );
 };

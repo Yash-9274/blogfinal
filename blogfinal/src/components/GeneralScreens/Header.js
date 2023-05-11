@@ -59,7 +59,7 @@ const Header = () => {
                       <FaUserEdit /> Profile
                     </p>
                   </Link>
-
+                  <Link className='profile-link1' to="/profile1"  > <FaUserEdit />  About Us </Link>
                   <button className="logout-btn" onClick={handleLogout}>
                     {" "}
                     <BiLogOut /> Logout

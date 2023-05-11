@@ -62,7 +62,9 @@ const Help = () => {
             will get back to you as soon as possible.
           </p>
         </li>
+
       </ol>
+
 
       {authContext.isAuthenticated ? (
         <p>
@@ -75,6 +77,7 @@ const Help = () => {
           us.
         </p>
       )}
+      <br></br>
 
       <p>
         We hope that our website will help you prepare for your exams and

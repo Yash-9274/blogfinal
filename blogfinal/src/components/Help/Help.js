@@ -4,7 +4,7 @@ import './Help.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../GeneralScreens/Loader';
 import { AuthContext } from '../../Context/AuthContext';
-
+import { useContext } from 'react';
 const Help = () => {
   const authContext = useContext(AuthContext);
 

@@ -64,6 +64,18 @@ const Help = () => {
         </li>
       </ol>
 
+      {authContext.isAuthenticated ? (
+        <p>
+          Welcome {authContext.user.name}, you are currently logged in. If you
+          have any questions or issues, please don't hesitate to contact us.
+        </p>
+      ) : (
+        <p>
+          If you have any questions or issues, please don't hesitate to contact
+          us.
+        </p>
+      )}
+
       <p>
         We hope that our website will help you prepare for your exams and
         achieve your academic goals. If you have any feedback or suggestions

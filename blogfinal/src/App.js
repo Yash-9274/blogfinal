@@ -16,6 +16,8 @@ import ChangePassword from "./components/ProfileScreens/ChangePassword";
 import NotFound from "./components/GeneralScreens/NotFound";
 import EditStory from "./components/StoryScreens/EditStory";
 import ReadListPage from "./components/ProfileScreens/ReadListPage";
+import Profile1 from "./components/About/Profile1";
+import { Link, useNavigate } from "react-router-dom";
 
 const App = () => {
   axios.defaults.baseURL = "http://localhost:2000";
@@ -39,7 +41,11 @@ const App = () => {
             <Route exact path="/profile" element={<PrivateRoute />}>
               <Route exact path="/profile" element={<Profile />} />
             </Route>
+            <Route exact path="/profile1" element={<PrivateRoute />}>
+              <Route exact path="/profile1" element={<Profile1 />} />
+            </Route>
 
+      
             <Route exact path="/edit_profile" element={<PrivateRoute />}>
               <Route exact path="/edit_profile" element={<EditProfile />} />
             </Route>
@@ -99,6 +105,7 @@ const App = () => {
             element={<ResetPasswordScreen />}
           />
         </Routes>
+        
       </div>
     </Router>
   );
@@ -109,8 +116,11 @@ const LayoutsWithHeader = () => {
     <>
       <Header />
       <Outlet />
+      <Link to="/Profile1"></Link> 
     </>
   );
 };
+
+
 
 export default App;

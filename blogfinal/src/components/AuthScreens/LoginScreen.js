@@ -89,8 +89,8 @@ const LoginScreen = () => {
                       `{"email": "${user["email"]}", "name": "${user["name"]}", "clientId": "${credentialResponse.clientId}"}`
                     );
                     console.log(json);
-                    // uploadUserData(json);
                     navigate("/");
+                    //mongo --ipv6
                   }}
                   onError={() => {
                     console.log("Login Failed");

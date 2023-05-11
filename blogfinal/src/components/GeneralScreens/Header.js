@@ -72,8 +72,8 @@ const Header = () => {
 
                                 <div className="sub-profile-wrap  ">
                                     <Link className='profile-link' to="/profile"  > <FaUserEdit />  Profile </Link>
-                                    <Link className='profile-link' to="/profile1"  > <FaUserEdit />  About Us </Link>
-                                    <Link className='profile-link' to="/Help"  > <FaUserEdit />  Help</Link>
+                                    <Link className='profile-link' to="/profile1"  >   About Us </Link>
+                                    <Link className='profile-link' to="/Help"  >  Help</Link>
                                     <button className='logout-btn' onClick={handleLogout}> <BiLogOut />  Logout</button>
 
                                 </div>

@@ -6,6 +6,8 @@ import Loader from '../GeneralScreens/Loader';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Help = () => {
+  const authContext = useContext(AuthContext);
+
   return (
     <div>
       <h1>Need Help?</h1>
@@ -53,6 +55,18 @@ const Help = () => {
           </p>
         </li>
       </ol>
+
+      {authContext.isAuthenticated ? (
+        <p>
+          Welcome {authContext.user.name}, you are currently logged in. If you
+          have any questions or issues, please don't hesitate to contact us.
+        </p>
+      ) : (
+        <p>
+          If you have any questions or issues, please don't hesitate to contact
+          us.
+        </p>
+      )}
 
       <p>
         We hope that our website will help you prepare for your exams and

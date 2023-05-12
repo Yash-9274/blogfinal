@@ -7,6 +7,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { AuthContext } from "../../Context/AuthContext";
 import { AiOutlineUpload } from "react-icons/ai";
 import "../../Css/AddStory.css";
+import badWords from 'bad-words';
 
 const AddStory = () => {
   const { config } = useContext(AuthContext);
@@ -17,6 +18,8 @@ const AddStory = () => {
   const [content, setContent] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  
+  const filter = new badWords();
 
   const clearInputs = () => {
     setTitle("");
@@ -29,9 +32,14 @@ const AddStory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
-    formdata.append("title", title);
+    
+    // Filter out bad words from title and content
+    const filteredTitle = filter.clean(title);
+    const filteredContent = filter.clean(content);
+    
+    formdata.append("title", filteredTitle);
     formdata.append("image", image);
-    formdata.append("content", content);
+    formdata.append("content", filteredContent);
 
     try {
       const { data } = await axios.post("/story/addstory", formdata, {
@@ -100,6 +108,8 @@ const AddStory = () => {
             type="file"
             ref={imageEl}
             onChange={(e) => {
+
+              console.log(e.target.files[0]);
               setImage(e.target.files[0]);
             }}
           />

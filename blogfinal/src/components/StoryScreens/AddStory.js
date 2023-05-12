@@ -33,6 +33,7 @@ const AddStory = () => {
     e.preventDefault();
     const formdata = new FormData();
     
+    
     // Filter out bad words from title and content
     const filteredTitle = filter.clean(title);
     const filteredContent = filter.clean(content);

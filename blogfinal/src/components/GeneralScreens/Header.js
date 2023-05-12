@@ -49,7 +49,7 @@ const Header = () => {
                         <div className="auth_options">
 
 
-                            <Link className='addStory-link' to="/addstory"><RiPencilFill /> Create </Link>
+                            <Link className='addStory-link' to="/addstory"><RiPencilFill /></Link>
 
 
                             <Link to="/readList" className='readList-link'>

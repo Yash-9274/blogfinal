@@ -47,7 +47,8 @@ const RegisterScreen = () => {
     <div className="Inclusive-register-page">
       <div className="register-big-wrapper">
         <div className="register-banner-section ">
-          <img src="register.png" alt="banner" width="490px" />
+
+          <img src="signup.png" alt="banner" width="490px" />
         </div>
 
         <div className="section-wrapper">

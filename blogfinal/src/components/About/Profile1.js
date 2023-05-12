@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loader from "../GeneralScreens/Loader";
 import { AuthContext } from '../../Context/AuthContext';
 import EsheDev from './Eshe1.png'
-import Ladali from './Ladali1.png'
+import LadaliDev from './Ladali1.png'
 import YashDev from './YASH1.png'
 
 export const Profile1 = () => {
@@ -20,7 +20,7 @@ export const Profile1 = () => {
           </div>
         </div>
         <div className="Developer2">
-          <img src= {Ladali} className="LadaliDev"></img>
+          <img src= {LadaliDev} className="LadaliDev"></img>
           <div className="card-body2">
             <h2 className="Dev2Title">Ladali Jain</h2>
             <p>Studying at NIIT University under Artificial Intelligence Specialisation.</p>

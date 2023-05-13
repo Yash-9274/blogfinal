@@ -105,9 +105,9 @@ const AddStory = () => {
           }}
           ref={editorEl}
         />
-        <div class="StoryImageField">
+        <div className="StoryImageField">
           <AiOutlineUpload />
-          <div class="txt">
+          <div className="txt">
             {image
               ? image.name
               : " Include a high-quality image in your blog to make it more inviting to readers."}

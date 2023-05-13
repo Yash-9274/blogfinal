@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "../../Css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 
 const LoginScreen = () => {
@@ -12,6 +12,27 @@ const LoginScreen = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handlegLogin = async (credentialResponse) => {
+    const userData = jwt_decode(credentialResponse.credential);
+    const res = await fetch("http://localhost:2000/auth/google-login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userData.email,
+        picture: userData.picture,
+        username: userData.given_name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    localStorage.setItem("authToken", data.token);
+    navigate("/");
+  };
+
+  const handlegFailure = () => {
+    console.log("Login Failed");
+  };
   const loginHandler = async (e) => {
     e.preventDefault();
 
@@ -75,29 +96,19 @@ const LoginScreen = () => {
               Forgot Password ?
             </Link>
             <button
-              class="class=text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center justify-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+              className="className=text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center justify-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
               type="submit"
             >
               Login
             </button>
-            <GoogleOAuthProvider clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com">
-              <div className="mt-6 flex justify-center w-full">
+            <div className="mt-6 flex justify-center w-full">
+              <GoogleOAuthProvider clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com">
                 <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    const user = jwt_decode(credentialResponse.credential);
-                    let json = JSON.parse(
-                      `{"email": "${user["email"]}", "name": "${user["name"]}", "clientId": "${credentialResponse.clientId}"}`
-                    );
-                    console.log(json);
-                    // uploadUserData(json);
-                    navigate("/");
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
+                  onSuccess={handlegLogin}
+                  onError={handlegFailure}
                 />
-              </div>
-            </GoogleOAuthProvider>
+              </GoogleOAuthProvider>
+            </div>
           </form>
         </div>
 

@@ -136,24 +136,7 @@ header .logo h5 {
   top: 55px;
   background-color: white;
   width: 130px;
-  height: 80px;
-  padding: 1.5rem 0.2rem;
-  right: -42px;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 6px;
-  border: rgba(218, 217, 217, 0.6) solid 1px;
-  box-shadow: 0 0 2px 4px rgb(206 206 206 / 20%);
-  display: none;
-  z-index: 52;
-}
-
-.sub-profile-wrap {
-  position: absolute;
-  top: 55px;
-  background-color: white;
-  width: 130px;
-  height: 130px;
+  /* height: 130px; */
   padding: 1.5rem 0.2rem;
   right: -42px;
   align-items: center;

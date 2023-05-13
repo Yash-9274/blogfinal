@@ -39,7 +39,7 @@ const Header = () => {
           {auth ? (
             <div className="auth_options">
               <Link className="addStory-link" to="/addstory">
-                <RiPencilFill /> Create{" "}
+                <RiPencilFill />
               </Link>
 
               <Link to="/readList" className="readList-link">
@@ -55,16 +55,16 @@ const Header = () => {
 
                 <div className="sub-profile-wrap">
                   <Link className="profile-link" to="/profile">
-                    <p>
-                      <FaUserEdit /> Profile
-                    </p>
+                    <FaUserEdit /> Profile
                   </Link>
-                  <Link className='profile-link1' to="/profile1"  > <FaUserEdit />  About Us </Link>
+                  <Link className="profile-link1" to="/profile1">
+                    {" "}
+                    <FaUserEdit /> About Us{" "}
+                  </Link>
                   <button className="logout-btn" onClick={handleLogout}>
                     {" "}
                     <BiLogOut /> Logout
                   </button>
-
                 </div>
               </div>
             </div>

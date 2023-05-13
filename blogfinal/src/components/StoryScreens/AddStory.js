@@ -36,19 +36,19 @@ const AddStory = () => {
 
     try {
       console.log("HEADERS", {
-        headers : {
-            ...config.headers,
-            "Content-Type": "multipart/form-data",
-            Accept: "application/json",
-            type: "formData",
+        headers: {
+          ...config.headers,
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          type: "formData",
         },
       });
       const { data } = await axios.post("/story/addstory", formdata, {
-        headers : {
-            ...config.headers,
-            "Content-Type": "multipart/form-data",
-            Accept: "application/json",
-            type: "formData",
+        headers: {
+          ...config.headers,
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          type: "formData",
         },
       });
       setSuccess("Add Blog successfully ");

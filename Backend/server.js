@@ -1,39 +1,62 @@
-const express = require("express")
-const dotenv = require("dotenv")
-const cors = require("cors")
-const path = require("path")
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const path = require("path");
+const { OAuth2Client } = require("google-auth-library");
 
-const IndexRoute = require("./Routers/index")
-const connectDatabase = require("./Helpers/database/connectDatabase")
-const customErrorHandler = require("./Middlewares/Errors/customErrorHandler")
+const IndexRoute = require("./Routers/index");
+const connectDatabase = require("./Helpers/database/connectDatabase");
+const customErrorHandler = require("./Middlewares/Errors/customErrorHandler");
 
 dotenv.config({
-    path:  './Config/config.env'
-})
+  path: "./Config/config.env",
+});
 
-connectDatabase()
+const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
-const app = express() ;
+connectDatabase();
 
-app.use(express.json())
-app.use(cors())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.use("/",IndexRoute)
+const users = [];
 
-app.use(customErrorHandler)
+function upsert(array, item) {
+  const i = array.findIndex((_item) => _item.email === item.email);
+  if (i > -1) array[i] = item;
+  else array.push(item);
+}
 
-const PORT = process.env.PORT || 7000 ;
+app.post("/google-login", async (req, res) => {
+  // console.log("/api/google-login");
+  const { token } = req.body;
+  console.log(token);
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+  });
+  // console.log(ticket);
+  const { name, email, picture } = ticket.getPayload();
+  upsert(users, { name, email, picture });
+  res.status(201);
+  res.json({ name, email, picture });
+});
 
-app.use(express.static(path.join(__dirname , "public") ))
+app.use("/", IndexRoute);
 
-const server = app.listen(PORT,()=>{
+app.use(customErrorHandler);
 
-    console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`)
+const PORT = process.env.PORT || 5000;
 
-})
+app.use(express.static(path.join(__dirname, "public")));
 
-process.on("unhandledRejection",(err , promise) =>{
-    console.log(`Logged Error : ${err}`)
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`);
+});
 
-    server.close(()=>process.exit(1))
-})
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Logged Error : ${err}`);
+
+  server.close(() => process.exit(1));
+});

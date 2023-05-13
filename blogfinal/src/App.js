@@ -18,7 +18,7 @@ import EditStory from "./components/StoryScreens/EditStory";
 import ReadListPage from "./components/ProfileScreens/ReadListPage";
 
 const App = () => {
-  axios.defaults.baseURL = "http://localhost:2000";
+  axios.defaults.baseURL = "http://localhost:5000";
   return (
     <Router>
       <div className="App">

@@ -3,14 +3,40 @@ import axios from "axios";
 import "../../Css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [loginData, setLoginData] = useState(
+    localStorage.getItem("loginData")
+      ? JSON.parse(localStorage.getItem("loginData"))
+      : null
+  );
 
+  const handlegLogin = async (credentialResponse) => {
+    console.log(credentialResponse);
+    const res = await fetch("http://localhost:5000/google-login", {
+      method: "POST",
+      body: JSON.stringify({
+        token: credentialResponse.credential,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(credentialResponse);
+    navigate("/");
+    const data = await res.json();
+    // setLoginData(data);
+    localStorage.setItem("loginData", JSON.stringify(data));
+  };
+
+  const handlegFailure = () => {
+    console.log("Login Failed");
+  };
   const loginHandler = async (e) => {
     e.preventDefault();
 
@@ -79,24 +105,14 @@ const LoginScreen = () => {
             >
               Login
             </button>
-            <GoogleOAuthProvider clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com">
-              <div className="mt-6 flex justify-center w-full">
+            <div className="mt-6 flex justify-center w-full">
+              <GoogleOAuthProvider clientId="1081086113702-c6nr2s3ubdmglgb2ojsv8u06ji9e7lsu.apps.googleusercontent.com">
                 <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    const user = jwt_decode(credentialResponse.credential);
-                    let json = JSON.parse(
-                      `{"email": "${user["email"]}", "name": "${user["name"]}", "clientId": "${credentialResponse.clientId}"}`
-                    );
-                    console.log(json);
-                    // uploadUserData(json);
-                    navigate("/");
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
+                  onSuccess={handlegLogin}
+                  onError={handlegFailure}
                 />
-              </div>
-            </GoogleOAuthProvider>
+              </GoogleOAuthProvider>
+            </div>
           </form>
         </div>
 

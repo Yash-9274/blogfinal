@@ -23,7 +23,7 @@ const ForgotPasswordScreen = () => {
       setEmail("");
       setTimeout(() => {
         setError("");
-      }, 5000);
+      }, 2000);
     }
   };
 

@@ -14,7 +14,7 @@ const LoginScreen = () => {
 
   const handlegLogin = async (credentialResponse) => {
     const userData = jwt_decode(credentialResponse.credential);
-    const res = await fetch("http://localhost:5000/auth/google-login", {
+    const res = await fetch("http://localhost:2000/auth/google-login", {
       method: "POST",
       body: JSON.stringify({
         email: userData.email,

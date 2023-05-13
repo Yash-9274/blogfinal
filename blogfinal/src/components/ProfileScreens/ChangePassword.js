@@ -24,7 +24,7 @@ const ChangePassword = () => {
             setConfirmPassword("");
             setTimeout(() => {
                 setError("");
-            }, 5000);
+            }, 2000);
             return setError("Passwords don't match");
         }
 

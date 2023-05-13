@@ -100,7 +100,7 @@ const EditStory = () => {
             <div className="currentlyImage">
               <div className="absolute">Currently Image</div>
               <img
-                src={`http://localhost:5000/storyImages/${previousImage}`}
+                src={`http://localhost:2000/storyImages/${previousImage}`}
                 alt="storyImage"
               />
             </div>

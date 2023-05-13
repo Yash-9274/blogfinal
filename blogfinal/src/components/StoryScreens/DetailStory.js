@@ -153,7 +153,7 @@ const DetailStory = () => {
                   {story.author && (
                     <li className="story-author-info">
                       <img
-                        src={`http://localhost:5000/userPhotos/${story.author.photo}`}
+                        src={story.author.photo}
                         alt={story.author.username}
                       />
                       <span className="story-author-username">

@@ -30,19 +30,10 @@ const AddStory = () => {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append("title", title);
-    console.log("LOCAL IGM", image);
     formdata.append("image", image);
     formdata.append("content", content);
 
     try {
-      console.log("HEADERS", {
-        headers: {
-          ...config.headers,
-          "Content-Type": "multipart/form-data",
-          Accept: "application/json",
-          type: "formData",
-        },
-      });
       const { data } = await axios.post("/story/addstory", formdata, {
         headers: {
           ...config.headers,
@@ -97,9 +88,9 @@ const AddStory = () => {
           }}
           ref={editorEl}
         />
-        <div class="StoryImageField">
+        <div className="StoryImageField">
           <AiOutlineUpload />
-          <div class="txt">
+          <div className="txt">
             {image
               ? image.name
               : " Include a high-quality image in your blog to make it more inviting to readers."}
@@ -109,7 +100,6 @@ const AddStory = () => {
             type="file"
             ref={imageEl}
             onChange={(e) => {
-              console.log(e.target.files[0]);
               setImage(e.target.files[0]);
             }}
           />

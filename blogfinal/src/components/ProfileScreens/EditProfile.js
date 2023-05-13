@@ -85,10 +85,10 @@ const EditProfile = () => {
               <label htmlFor="email">E-mail</label>
             </div>
 
-            <div className="profile-ımg-upld-wrapper">
-              <div class="ProfilePhotoField">
+            {/* <div className="profile-ımg-upld-wrapper">
+              <div className="ProfilePhotoField">
                 <FaUserAlt />
-                <div class="txt">
+                <div className="txt">
                   {photo === previousPhoto ? (
                     <div>
                       <AiOutlineUpload />
@@ -107,14 +107,11 @@ const EditProfile = () => {
                 />
               </div>
 
-              <div class="currentImage">
-                <div class="absolute">Currently Image</div>
-                <img
-                  src={`http://localhost:5000/userPhotos/${previousPhoto}`}
-                  alt="userPhoto"
-                />
+              <div className="currentImage">
+                <div className="absolute">Currently Image</div>
+                <img src={previousPhoto} alt="userPhoto" />
               </div>
-            </div>
+            </div> */}
 
             <button type="submit" className="editprofile-btn">
               Edit Profile{" "}

@@ -48,10 +48,7 @@ const ReadListPage = () => {
           <h2>Reading List </h2>
 
           <div className="readList-top-block">
-            <img
-              src={`http://localhost:5000/userPhotos/${activeUser.photo}`}
-              alt={activeUser.username}
-            />
+            <img src={activeUser.photo} alt={activeUser.username} />
 
             <div className="activeUser-info-wrapper">
               <b>{activeUser.username}</b>

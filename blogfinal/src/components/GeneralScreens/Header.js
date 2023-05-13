@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import "../../Css/Header.css";
@@ -9,15 +9,7 @@ import { BsBookmarks } from "react-icons/bs";
 import SkeletonElement from "../Skeletons/SkeletonElement";
 import { AuthContext } from "../../Context/AuthContext";
 
-const LoginDataContext = createContext();
-
 const Header = () => {
-  const loginDataFromLocalStorage = localStorage.getItem("loginData")
-    ? JSON.parse(localStorage.getItem("loginData"))
-    : null;
-  const [loginData, setLoginData] = useState(loginDataFromLocalStorage);
-
-  console.log(loginData);
   const bool = localStorage.getItem("authToken") ? true : false;
   const [auth, setAuth] = useState(bool);
   const { activeUser } = useContext(AuthContext);
@@ -34,86 +26,63 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     navigate("/");
-    localStorage.removeItem("loginData");
-    setLoginData(null);
   };
 
   return (
-    <LoginDataContext.Provider value={loginData}>
-      <header>
-        <div className="averager">
-          <Link to="/" className="logo">
-            <h5>Assist-Ace</h5>
-          </Link>
-          <SearchForm />
-          <div className="header_options">
-            {auth || loginData ? (
-              <div className="auth_options">
-                <Link className="addStory-link" to="/addstory">
-                  <RiPencilFill /> Create{" "}
-                </Link>
+    <header>
+      <div className="averager">
+        <Link to="/" className="logo">
+          <h5>Assist-Ace</h5>
+        </Link>
+        <SearchForm />
+        <div className="header_options">
+          {auth ? (
+            <div className="auth_options">
+              <Link className="addStory-link" to="/addstory">
+                <RiPencilFill /> Create{" "}
+              </Link>
 
-                <Link to="/readList" className="readList-link">
-                  <BsBookmarks />
-                  <span id="readListLength">{activeUser.readListLength}</span>
-                </Link>
-                <div className="header-profile-wrapper ">
-                  {loading ? (
-                    <SkeletonElement type="minsize-avatar" />
-                  ) : (
-                    <>
-                      {activeUser.photo ? (
-                        <img
-                          src={`http://localhost:5000/userPhotos/${activeUser.photo}`}
-                          alt={activeUser.username}
-                        />
-                      ) : (
-                        <img
-                          src={loginData.picture}
-                          alt={activeUser.username}
-                        />
-                      )}
-                    </>
-                  )}
-                  {loginData ? (
-                    <div className="sub-profile-wrap">
-                      <button className="logout-btn" onClick={handleLogout}>
-                        {" "}
-                        <BiLogOut /> Logout
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="sub-profile-wrap">
-                      <Link className="profile-link" to="/profile">
-                        {" "}
-                        <FaUserEdit /> Profile{" "}
-                      </Link>
+              <Link to="/readList" className="readList-link">
+                <BsBookmarks />
+                <span id="readListLength">{activeUser.readListLength}</span>
+              </Link>
+              <div className="header-profile-wrapper ">
+                {loading ? (
+                  <SkeletonElement type="minsize-avatar" />
+                ) : (
+                  <img src={activeUser.photo} alt={activeUser.username} />
+                )}
 
-                      <button className="logout-btn" onClick={handleLogout}>
-                        {" "}
-                        <BiLogOut /> Logout
-                      </button>
-                    </div>
-                  )}
+                <div className="sub-profile-wrap">
+                  <Link className="profile-link" to="/profile">
+                    <p>
+                      <FaUserEdit /> Profile
+                    </p>
+                  </Link>
+
+                  <button className="logout-btn" onClick={handleLogout}>
+                    {" "}
+                    <BiLogOut /> Logout
+                  </button>
                 </div>
               </div>
-            ) : (
-              <div className="noAuth_options">
-                <Link className="login-link" to="/login">
-                  {" "}
-                  Login{" "}
-                </Link>
+            </div>
+          ) : (
+            <div className="noAuth_options">
+              <Link className="login-link" to="/login">
+                {" "}
+                Login{" "}
+              </Link>
 
-                <Link className="register-link" to="/register">
-                  {" "}
-                  Get Started
-                </Link>
-              </div>
-            )}
-          </div>
+              <Link className="register-link" to="/register">
+                {" "}
+                Get Started
+              </Link>
+            </div>
+          )}
         </div>
-      </header>
-    </LoginDataContext.Provider>
+      </div>
+    </header>
   );
 };
 

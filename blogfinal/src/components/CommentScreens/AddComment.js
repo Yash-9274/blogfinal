@@ -99,10 +99,7 @@ const AddComment = ({
               showStatus ? "activeuser-info " : "activeuser-info hidden "
             }
           >
-            <img
-              src={`http://localhost:/userPhotos/${activeUser.photo}`}
-              alt={activeUser.username}
-            />
+            <img src={activeUser.photo} alt={activeUser.username} />
             <span className="username">{activeUser.username} </span>
           </div>
 
@@ -115,7 +112,6 @@ const AddComment = ({
               name="content"
               onKeyUp={(e) => {
                 setContent(e.target.innerHTML);
-                console.log(e.target.innerHTML);
               }}
               onFocus={() => setShowStatus(true)}
             ></div>

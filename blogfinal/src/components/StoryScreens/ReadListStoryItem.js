@@ -21,7 +21,6 @@ const ReadListStoryItem = ({ story, editDate }) => {
             <AiFillStar />
           </i>
         </div>
-
         <div className="story-med-block">
           <div className="readList-story-title">
             <a href={`story/${story.slug}`}>{story.title}</a>

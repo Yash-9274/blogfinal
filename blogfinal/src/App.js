@@ -19,6 +19,7 @@ import ReadListPage from "./components/ProfileScreens/ReadListPage";
 import Profile1 from "./components/About/Profile1";
 import Help from "./components/Help/Help";
 import { Link, useNavigate } from "react-router-dom";
+import Powerbi from "./components/Powerbi/Powerbi";
 
 const App = () => {
   axios.defaults.baseURL = "http://localhost:2000";
@@ -47,6 +48,9 @@ const App = () => {
             </Route>
             <Route exact path="/Help" element={<PrivateRoute />}>
               <Route exact path="/Help" element={<Help />} />
+            </Route>
+            <Route exact path="/Powerbi" element={<PrivateRoute />}>
+              <Route exact path="/Powerbi" element={<Powerbi />} />
             </Route>
 
       
@@ -122,6 +126,7 @@ const LayoutsWithHeader = () => {
       <Outlet />
       <Link to="/Profile1"></Link> 
       <Link to="/Help"></Link>
+      <Link to="/Powerbi"></Link>
     </>
   );
 };

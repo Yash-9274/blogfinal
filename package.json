@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "powerbi-models": "^1.12.6"
+  }
+}

@@ -50,6 +50,7 @@ const Header = () => {
 
 
                             <Link className='addStory-link' to="/addstory"><RiPencilFill /></Link>
+                            <Link className='addStory-link' to="/Powerbi"></Link>
 
 
                             <Link to="/readList" className='readList-link'>

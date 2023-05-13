@@ -75,18 +75,26 @@ const Header = () => {
                       )}
                     </>
                   )}
+                  {loginData ? (
+                    <div className="sub-profile-wrap">
+                      <button className="logout-btn" onClick={handleLogout}>
+                        {" "}
+                        <BiLogOut /> Logout
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="sub-profile-wrap">
+                      <Link className="profile-link" to="/profile">
+                        {" "}
+                        <FaUserEdit /> Profile{" "}
+                      </Link>
 
-                  <div className="sub-profile-wrap  ">
-                    <Link className="profile-link" to="/profile">
-                      {" "}
-                      <FaUserEdit /> Profile{" "}
-                    </Link>
-
-                    <button className="logout-btn" onClick={handleLogout}>
-                      {" "}
-                      <BiLogOut /> Logout
-                    </button>
-                  </div>
+                      <button className="logout-btn" onClick={handleLogout}>
+                        {" "}
+                        <BiLogOut /> Logout
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (

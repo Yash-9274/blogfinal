@@ -162,7 +162,22 @@ header .logo h5 {
   margin-right: 4px;
   margin-top: -5px;
 }
-
+.sub-profile-wrap a.profile-link1 {
+  margin-bottom: 1.2rem;
+  text-decoration: none;
+  font-family: "Saira Condensed", sans-serif;
+  font-size: 1.2rem;
+  color: #0063a5;
+  font-weight: 500;
+}
+.sub-profile-wrap a.Help {
+  margin-bottom: 1.2rem;
+  text-decoration: none;
+  font-family: "Saira Condensed", sans-serif;
+  font-size: 1.2rem;
+  color: #0063a5;
+  font-weight: 500;
+}
 .sub-profile-wrap button.logout-btn {
   border: none;
   background-color: white;

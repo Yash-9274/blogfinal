@@ -7,6 +7,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import EsheDev from './Eshe1.png'
 import LadaliDev from './Ladali1.png'
 import YashDev from './YASH1.png'
+import NitinDev from './Nitin4.png'
 
 export const Profile1 = () => {
     return (
@@ -34,7 +35,7 @@ export const Profile1 = () => {
           </div>
         </div>
         <div className="Developer4">
-          <img src={EsheDev} className="NitinDev"></img>
+          <img src={NitinDev} className="NitinDev"></img>
           <div className="card-body4">
             <h2 className="Dev4Title">Nitin Dhakad</h2>
             <p>Studying at NIIT University under Data Science Specialisation.</p>

@@ -58,8 +58,12 @@ const Header = () => {
                     <FaUserEdit /> Profile
                   </Link>
                   <Link className="profile-link1" to="/profile1">
-                    {" "}
-                    <FaUserEdit /> About Us{" "}
+                  
+                     About Us
+                  </Link>
+                  <Link className="Help" to="/Help">
+                    
+                    Help
                   </Link>
                   <button className="logout-btn" onClick={handleLogout}>
                     {" "}

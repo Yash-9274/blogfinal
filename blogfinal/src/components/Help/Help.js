@@ -10,7 +10,7 @@ const Help = () => {
 
   return (
     <div>
-      <h1>Need Help?</h1>
+      <h2><b>Need Help?</b></h2>
       <br></br>
       <p>
         Welcome to our exam blog assistance website! We understand that

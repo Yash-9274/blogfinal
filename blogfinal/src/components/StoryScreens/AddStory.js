@@ -20,6 +20,10 @@ const AddStory = () => {
   const [error, setError] = useState("");
   
   const filter = new badWords();
+  filter.addWords('dumb'); 
+  filter.addWords('rubbish'); 
+  filter.addWords('damn'); 
+  filter.addWords('shit');
 
   const clearInputs = () => {
     setTitle("");

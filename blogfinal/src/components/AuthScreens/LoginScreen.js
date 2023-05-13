@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import "../../Css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 
@@ -89,8 +88,8 @@ const LoginScreen = () => {
                       `{"email": "${user["email"]}", "name": "${user["name"]}", "clientId": "${credentialResponse.clientId}"}`
                     );
                     console.log(json);
+                    // uploadUserData(json);
                     navigate("/");
-                    //mongo --ipv6
                   }}
                   onError={() => {
                     console.log("Login Failed");

@@ -45,7 +45,9 @@ const EditStory = () => {
     const formdata = new FormData();
     formdata.append("title", title);
     formdata.append("content", content);
-    formdata.append("image", image);
+    
+    const imageValue = typeof image === 'object' ? image.name : image;
+    formdata.append("image", imageValue);
     formdata.append("previousImage", previousImage);
 
     try {

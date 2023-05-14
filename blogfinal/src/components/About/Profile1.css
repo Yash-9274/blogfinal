@@ -3,7 +3,7 @@
     float: left;
     position: absolute;
 width: 300px;
-height: 100px;
+height: 150px;
 left: 200px;
 top: 200px;
 
@@ -30,7 +30,7 @@ top: 200px;
     float: right;
     position: absolute;
 width: 300px;
-height: 100px;
+height: 150px;
 right: 200px;
 top: 200px;
 
@@ -55,7 +55,7 @@ top: 200px;
         float: left;
         position: absolute;
     width: 300px;
-    height: 100px;
+    height: 150px;
     left: 200px;
     top: 480px;
     
@@ -81,7 +81,7 @@ top: 200px;
         float: right;
         position: absolute;
     width: 300px;
-    height: 100px;
+    height: 150px;
     right: 200px;
     top: 480px;
     

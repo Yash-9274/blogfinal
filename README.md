@@ -1,7 +1,7 @@
 Exam-Assistance Blogs
 
-#For Frontend
-
+**#For Frontend**
+<br>
 npm install
 <br>
 npm install react-scripts
@@ -16,6 +16,6 @@ npm install axios
 npm install bad-words
 <br>
 
-#For Backend
+**#For Backend**
 
 

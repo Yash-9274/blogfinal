@@ -7,8 +7,8 @@
 
 .profile-top-wrap {
     border: 1px solid rgb(235, 235, 235);
-    padding: 25px 22px;
-    border-radius: 6px;
+    padding: 22px 25px;
+    border-radius: 9px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;

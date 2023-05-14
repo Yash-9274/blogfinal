@@ -1,0 +1,24 @@
+.StarRating-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star:hover,
+.star:hover ~ .star,
+.star:hover ~ .star:hover {
+  color: #0063a5;
+}
+
+.star:active,
+.star:focus {
+  outline: none;
+}
+
+.star:not(:last-child) {
+  margin-right: 5px;
+}

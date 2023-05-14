@@ -8,10 +8,10 @@
 .profile-top-wrap {
     border: 1px solid rgb(235, 235, 235);
     padding: 22px 25px;
-    border-radius: 9px;
+    border-radius: 6px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
 }
 
 .profile-top-wrap span {

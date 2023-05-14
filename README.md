@@ -18,4 +18,14 @@ npm install bad-words
 
 **#For Backend**
 
+<br>
+npm install react-google-login
+
+<br>
+npm install react-google-auth
+<br>
+npm install mongoose express dotenv
+<br>
+npm install mongodb
+<br>
 

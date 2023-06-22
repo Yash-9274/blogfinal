@@ -1,4 +1,5 @@
 Exam-Assistance Blogs
+Website for Blog writing and exam assistance
 
 **#For Frontend**
 <br>
